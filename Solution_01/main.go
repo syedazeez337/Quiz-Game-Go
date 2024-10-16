@@ -24,6 +24,8 @@ func main() {
 		exit(fmt.Sprintln("Failed to parse the provided CSV file"))
 	}
 
+	counter := 0
+
 	problems := parseLines(lines)
 	for i, val := range problems {
 		fmt.Printf("Problem #%d: %s = \n", i+1, val.ques)
@@ -31,10 +33,13 @@ func main() {
 		fmt.Scanf("%s\n", &answer)
 		if answer == val.ans {
 			fmt.Println("Correct")
+			counter++
 		} else {
 			fmt.Println("Incorrect")
 		}
 	}
+
+	fmt.Printf("You got %d of %d correct\n", counter, len(problems))
 }
 
 func parseLines(lines [][]string) []problem {
